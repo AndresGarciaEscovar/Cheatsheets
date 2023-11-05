@@ -1,0 +1,63 @@
+% Document class.
+\documentclass[fleqn, letterpaper]{article}
+
+% Packages.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    allbordercolors = {white},
+    allcolors = {black},
+    anchorcolor = {black},
+    citecolor = {black},
+    filecolor = {black}
+    linkcolor = {black},
+    menucolor = {black},
+    runcolor = {black},
+    urlcolor = {blue},
+}
+
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+% No indentation.
+\setlength\parindent{0cm}
+
+% Colors.
+\definecolor{DarkGreen}{rgb}{0.0,0.6,0.0}
+
+% Margins and general layout - Vertical variables.
+\topmargin=0mm
+\headheight=6mm 
+\headsep=1.2cm 
+\textheight=22.cm 
+\footskip=1cm
+\linespread{1.0} 
+\addtolength{\voffset}{-0.5in}
+
+% Margins and general layout - Horizontal variables.
+\oddsidemargin=2.5cm 
+\evensidemargin=1.7 cm 
+\textwidth=16.5cm
+\addtolength{\hoffset}{-1.0in}
+\setlength{\parindent}{0cm}
+
+% Title and author.
+\title{Cheat Sheets}
+\author{Andr\'es Garc\'ia Escovar}
+\date{\today}
+
+% Begin document.
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+    \input{git.tex}
+    \newpage
+    \input{python_snippets.tex}
+\end{document}

@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  "Python Snippets" Cheatsheet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\textquotedblleft Python Snippets\textquotedblright\ Cheatsheet}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+%  Python Code - Code Timer.
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Live Elapsed Time}
+
+For a subprocess:
+\begin{minted}[frame=single]{python3}
+"""
+    Code to run a live timer for a subprocess.
+"""
+
+# ------------------------------------------------------------------------------------
+# Imports
+# ------------------------------------------------------------------------------------
+
+# General
+import subprocess
+
+from datetime import datetime
+
+# ------------------------------------------------------------------------------------
+# Variables
+# ------------------------------------------------------------------------------------
+
+# Time variables.
+time_ela = None  # Elapsed time.
+time_str = None  # Time at which the process starts.
+
+# Other
+command = ["sh", "script.sh"]  # Command to run, this is an example.
+elapsed = None  # Elapsed time counter.
+flag_process = True  # Flag to indicate if the process is running.
+process = None  # Contains the thread of the process.
+
+# ------------------------------------------------------------------------------------
+# Algorithm
+# ------------------------------------------------------------------------------------
+
+# Initial time is always 00:00
+print(f"\rElapsed time: {int(0):02d}:{int(0):02d}", end="")
+
+# Start infinite loop.
+while True:
+    # Only if the process is running.
+    if not flag:
+        elapsed = (datetime.now() - time_str).total_seconds()
+        minutes = elapsed / 60
+        seconds = (minutes - int(minutes)) * 60
+        print(f"\rElapsed time: {int(minutes):02d}:{int(seconds):02d}", end="")
+
+\end{minted}
+\newpage
+\begin{minted}[frame=single]{python3}
+
+    # Only spawn one process.
+    if flag:
+        # Set the flag to False, start timer and process.
+        flag = False
+        str_time = datetime.now()
+        proc = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+        )
+        continue
+    
+    # Exit the loop if the process is done.
+    if proc.returncode is not None:
+        fstring = f"\rElapsed time: {int(minutes):02d}:{int(seconds):02d}"
+        break
+
+# Print the final time.
+print(f"\r{fstring}")
+
+\end{minted}
+\subsection*{Things to Consider}
+\begin{itemize}
+    \item Remember to include a carriage return so the string is always removed.
+    \item Include the carriage return at the \textbf{\textit{start}} of the string,
+          \textbf{\textit{not}} at the end.
+\end{itemize}
