@@ -111,7 +111,7 @@ conda remove --prefix <path_to_env> --all
 \end{itemize}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
-% Add packages to "conda" Environment
+% Add Packages to "conda" Environment
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 
 \subsection{Add Packages}
@@ -142,5 +142,44 @@ conda install <package_name_0>...<package_name_N>
     \begin{minted}[frame=single]{bash}
 conda install --channel <channel_name> <package_name_0>...<package_name_N>
     \end{minted}
+    %
+    \item Add packages with a specific version:
+    \begin{minted}[frame=single]{bash}
+conda install <package_name>=<version>
+    \end{minted}
+    %
+    \item Add packages from a yaml file:
+    \begin{minted}[frame=single]{bash}
+conda install --file <path_to_yaml_file>
+    \end{minted}
+    %
+\end{itemize}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% Remove Packages from "conda" Environment
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Remove Packages}
+
+\begin{itemize}
+    \item Remove packages from an environment:
+    \begin{minted}[frame=single]{bash}
+conda remove --name <env_name> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+    \item Remove packages from an environment in a specific location:
+    \begin{minted}[frame=single]{bash}
+conda remove --prefix <path_to_env> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+    \item Remove packages from an active environment:
+    \begin{enumerate}
+        \item Activate the environment (\hyperref[conda:activateEnv]{click here}).
+        \item Remove packages: 
+        \begin{minted}[frame=single]{bash}
+conda remove <package_name_0>...<package_name_N>
+        \end{minted}
+    \end{enumerate}
     %
 \end{itemize}
