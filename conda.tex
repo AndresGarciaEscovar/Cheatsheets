@@ -54,6 +54,7 @@ conda create --prefix <path_to_env>
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 
 \subsection{Activate Environment}
+\label{conda:activateEnv}
 
 \begin{itemize}
     %
@@ -97,10 +98,49 @@ conda create --name <env_name> --clone <env_to_clone>
 
 \begin{itemize}
     %
-    \item Clone an environment:
+    \item Remove an environment:
     \begin{minted}[frame=single]{bash}
-conda create --name <env_name> --clone <env_to_clone>
+conda remove --name <env_name> --all
     \end{minted}
-    %    
+    %
+    \item Remove and environment in a specific location:
+    \begin{minted}[frame=single]{bash}
+conda remove --prefix <path_to_env> --all
+    \end{minted}
+    %
 \end{itemize}
 
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% Add packages to "conda" Environment
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Add Packages}
+
+Notice that different commands can be mixed and matched.
+\begin{itemize}
+    %
+    \item Add packages to an environment:
+    \begin{minted}[frame=single]{bash}
+conda install --name <env_name> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+    \item Add packages to an environment in a specific location:
+    \begin{minted}[frame=single]{bash}
+conda install --prefix <path_to_env> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+    \item Add packages to an active environment:
+    \begin{enumerate}
+        \item Activate the environment (\hyperref[conda:activateEnv]{click here}).
+        \item Add packages: 
+        \begin{minted}[frame=single]{bash}
+conda install <package_name_0>...<package_name_N>
+        \end{minted}
+    \end{enumerate}
+    %
+    \item Add packages from a different channel in an active environment:
+    \begin{minted}[frame=single]{bash}
+conda install --channel <channel_name> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+\end{itemize}
