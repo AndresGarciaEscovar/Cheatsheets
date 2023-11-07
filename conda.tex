@@ -3,12 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\textquotedblleft conda Snippets\textquotedblright\ Cheatsheet}
 
-
 %///////////////////////////////////////////////////////////////////////////////////////////////////
-% Activate "conda"
+% Create "conda" Environment
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 
-\subsection{Create}
+\subsection{Create Environment}
 
 \begin{itemize}
     %
@@ -22,51 +21,86 @@ conda create --name <env_name>
 conda create --name <env_name> <package_name_0>...<package_name_N>
     \end{minted}
     %
+    \item Create a conda environment from a yaml file:
+    \begin{minted}[frame=single]{bash}
+conda env create --file <path_to_yaml_file>
+    \end{minted}
+    Sample yaml file:
+    \begin{minted}[frame=single]{yaml}
+name: myenv
+channels:
+    - conda-forge
+    - defaults
+dependencies:
+    - python=3.7
+    - numpy
+    - matplotlib
+    - pip
+    - pip:
+        - tensorflow==2.0.0
+    \end{minted}
+    %
+    \item Create at a specific location:
+    \begin{minted}[frame=single]{bash}
+conda create --prefix <path_to_env>
+    \end{minted}
+    The previous options still hold.
+    %
 \end{itemize}
+
+
 %///////////////////////////////////////////////////////////////////////////////////////////////////
-% .bashrc snippet
+% Activate "conda" Environment
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 
-\subsection{.bashrc snippet}
+\subsection{Activate Environment}
 
-The following code initializes the \textquotedblleft conda\textquotedblright\ environment in the
-\textquotedblleft .bashrc\textquotedblright\ file. It also deactivates the \textquotedblleft 
-conda\textquotedblright\ environment.
-\begin{minted}[frame=single]{bash}
-# >>> conda initialize >>>
-_conda_setup="$('<path_to_environment>/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$_conda_setup"
-else
-    if [ -f "<path_to_environment>/etc/profile.d/conda.sh" ]; then
-        . "<path_to_environment>/etc/profile.d/conda.sh"
-    else
-        export PATH="<path_to_environment>/bin:$PATH"
-    fi
-fi
-unset _conda_setup
-# <<< conda initialize <<<
-
-# Deactivate conda.
+\begin{itemize}
+    %
+    \item Activate an environment in the main installation directory:
+    \begin{minted}[frame=single]{bash}
+conda activate <env_name>
+    \end{minted}
+    %
+    \item Activate an environment in a specific location:
+    \begin{minted}[frame=single]{bash}
+conda activate <path_to_env>
+    \end{minted}
+    %
+    \item To deactivate an environment:
+    \begin{minted}[frame=single]{bash}
 conda deactivate
-\end{minted}
+    \end{minted}
+    %
+\end{itemize}
 
-example:
-\begin{minted}[frame=single]{bash}
-# >>> conda initialize >>>
-_conda_setup="$('/home/hp/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$_conda_setup"
-else
-    if [ -f "/home/hp/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/hp/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/hp/miniconda3/bin:$PATH"
-    fi
-fi
-unset _conda_setup
-# <<< conda initialize <<<
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% Clone "conda" Environment
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 
-# Deactivate conda.
-conda deactivate
-\end{minted}
+\subsection{Clone Environment}
+
+\begin{itemize}
+    %
+    \item Clone an environment:
+    \begin{minted}[frame=single]{bash}
+conda create --name <env_name> --clone <env_to_clone>
+    \end{minted}
+    %    
+\end{itemize}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% Remove "conda" Environment
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Remove Environment}
+
+\begin{itemize}
+    %
+    \item Clone an environment:
+    \begin{minted}[frame=single]{bash}
+conda create --name <env_name> --clone <env_to_clone>
+    \end{minted}
+    %    
+\end{itemize}
+
