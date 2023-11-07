@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  "conda" Cheatsheet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\textquotedblleft conda Snippets\textquotedblright\ Cheatsheet}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% Activate "conda"
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Create}
+
+\begin{itemize}
+    %
+    \item Create an empty conda environment:
+    \begin{minted}[frame=single]{bash}
+conda create --name <env_name>
+    \end{minted}
+    %
+    \item Create a conda environment with packages:
+    \begin{minted}[frame=single]{bash}
+conda create --name <env_name> <package_name_0>...<package_name_N>
+    \end{minted}
+    %
+\end{itemize}
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+% .bashrc snippet
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{.bashrc snippet}
+
+The following code initializes the \textquotedblleft conda\textquotedblright\ environment in the
+\textquotedblleft .bashrc\textquotedblright\ file. It also deactivates the \textquotedblleft 
+conda\textquotedblright\ environment.
+\begin{minted}[frame=single]{bash}
+# >>> conda initialize >>>
+_conda_setup="$('<path_to_environment>/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$_conda_setup"
+else
+    if [ -f "<path_to_environment>/etc/profile.d/conda.sh" ]; then
+        . "<path_to_environment>/etc/profile.d/conda.sh"
+    else
+        export PATH="<path_to_environment>/bin:$PATH"
+    fi
+fi
+unset _conda_setup
+# <<< conda initialize <<<
+
+# Deactivate conda.
+conda deactivate
+\end{minted}
+
+example:
+\begin{minted}[frame=single]{bash}
+# >>> conda initialize >>>
+_conda_setup="$('/home/hp/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$_conda_setup"
+else
+    if [ -f "/home/hp/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hp/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hp/miniconda3/bin:$PATH"
+    fi
+fi
+unset _conda_setup
+# <<< conda initialize <<<
+
+# Deactivate conda.
+conda deactivate
+\end{minted}
