@@ -150,9 +150,28 @@ conda install <package_name>=<version>
     %
     \item Add packages from a yaml file:
     \begin{minted}[frame=single]{bash}
-conda install --file <path_to_yaml_file>
+conda env update --file <path_to_yaml_file>
     \end{minted}
-    %
+        %
+    \item Update the packages to the given ones:
+    \begin{minted}[frame=single]{bash}
+conda env update --file <path_to_yaml_file> --prune
+    \end{minted}
+    \newpage
+    Sample yaml file to udpate:
+    \begin{minted}[frame=single]{yaml}
+        channels:
+            - conda-forge
+            - defaults
+        dependencies:
+            - python=3.7
+            - numpy
+            - matplotlib
+            - pip
+            - pip:
+                - tensorflow==2.0.0
+            \end{minted}
+            %
 \end{itemize}
 
 
