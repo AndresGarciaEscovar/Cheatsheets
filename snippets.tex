@@ -66,6 +66,24 @@ wget --recursive --no-parent <url>/<valid_file/directory_name>
 \end{minted}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
+%  Linux - Untar tar.gz Files.
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Linux - Untar tar.gz Files}
+
+To untar files with the \mintinline{bash}|tar.gz| extension, the following command can be used:
+\begin{minted}[frame=single]{bash}
+tar -xvzf <file.tar.gz>
+\end{minted}
+The flags mean:
+\begin{itemize}
+    \item \mintinline{bash}|-x|: Extract files from an archive.
+    \item \mintinline{bash}|-v|: Verbose mode, print the names of the files as they are extracted.
+    \item \mintinline{bash}|-z|: Filter the archive through gzip.
+    \item \mintinline{bash}|-f|: Use archive file or device ARCHIVE.
+\end{itemize}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 %  Python Code - Code Timer.
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 
