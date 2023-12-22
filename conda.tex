@@ -73,6 +73,24 @@ conda activate <path_to_env>
 conda deactivate
     \end{minted}
     %
+    \newpage
+    \item Activate conda environment in a Python script:
+    \begin{minted}[frame=single]{python}
+import subprocess
+
+script = (
+    ". /home/hp/miniconda3/etc/profile.d/conda.sh && conda activate "
+    "testenv && conda env list"
+)
+
+subprocess.run(script.split(" "), shell=True)
+    \end{minted}
+    Things to remember:
+    \begin{itemize}
+        \item The \mintinline{python}{shell=True} option is important; with 
+        \mintinline{python}{shell=False}, the code will \textbf{not} run.
+    \end{itemize}
+    %
 \end{itemize}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,7 +175,6 @@ conda env update --file <path_to_yaml_file>
     \begin{minted}[frame=single]{bash}
 conda env update --file <path_to_yaml_file> --prune
     \end{minted}
-    \newpage
     Sample yaml file to udpate:
     \begin{minted}[frame=single]{yaml}
         channels:
