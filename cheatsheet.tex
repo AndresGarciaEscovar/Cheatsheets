@@ -4,18 +4,22 @@
 % Packages.
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
+\usepackage[all]{hypcap}
 \hypersetup{
     colorlinks = true,
     allbordercolors = {white},
     allcolors = {black},
     anchorcolor = {black},
     citecolor = {black},
-    filecolor = {black}
-    linkcolor = {black},
+    filecolor = {black},
+    linkcolor = {blue},
     menucolor = {black},
     runcolor = {black},
     urlcolor = {blue},
 }
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 \usepackage{amsmath}
 \usepackage{framed}
@@ -24,6 +28,8 @@
 \usepackage{multirow}
 \usepackage{stackengine}
 \usepackage{tikz}
+
+\usetikzlibrary{shadows}
 
 % No indentation.
 \setlength\parindent{0cm}
@@ -47,6 +53,22 @@
 \addtolength{\hoffset}{-1.0in}
 \setlength{\parindent}{0cm}
 
+% Other setup options.
+\newcommand*\keystroke[1]{%
+  \tikz[baseline=(key.base)]
+    \node[%
+      draw,
+      fill=white,
+      drop shadow={shadow xshift=0.25ex,shadow yshift=-0.25ex,fill=black,opacity=0.75},
+      rectangle,
+      rounded corners=2pt,
+      inner sep=1pt,
+      line width=0.5pt,
+      font=\scriptsize\sffamily
+    ](key) {#1\strut}
+  ;
+}
+
 % Title and author.
 \title{Cheat Sheets}
 \author{Andr\'es Garc\'ia Escovar}
@@ -64,4 +86,6 @@
     \input{make.tex}
     \newpage
     \input{snippets.tex}
+    \newpage
+    \input{installations.tex}
 \end{document}

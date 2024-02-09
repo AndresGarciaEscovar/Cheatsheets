@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "Installations and Setup"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\textquotedblleft Installations and Setup\textquotedblright\
+Cheatsheet
+}
+
+%///////////////////////////////////////////////////////////////////////////////
+% Linux - NeoVIM 
+%///////////////////////////////////////////////////////////////////////////////
+
+\subsection{Linux - NeoVIM}
+
+% Installation
+\subsubsection{Installation}
+
+\begin{enumerate}
+    %
+    \item To install \textbf{NeoVIM} there are many methods. The suggested
+    method is to use the \textit{snap} store, or equivalent, by using the
+    command:
+    \begin{minted}[frame=single]{bash}
+$ sudo snap install nvim --classic
+    \end{minted}
+    This will install \textbf{NeoVIM} in the system.
+    %
+    \item The \textit{--classic} flag is used to install the software with
+    full access to the system, which is required for some plugins and, most of
+    the time, for the software to even install.
+    %
+    \item Make sure that the
+    \textit{.bashrc} has the snap store path in the \mintinline{text}|PATH|
+    variable at the start of the list:
+    \begin{minted}[frame=single]{bash}
+export PATH=/snap/bin:$PATH
+    \end{minted}
+    %
+    \item To make sure the installation was successful, run the command:
+    \begin{minted}[frame=single]{bash}
+$ nvim --version
+    \end{minted}
+    Make sure that this is not a \textquotedblleft developer 
+    version\textquotedblright; i.e., the latest stable version.
+    %
+\end{enumerate}
+
+\subsubsection{Setup - Lazy: Package Manager}
+This procedure is to perform the basic setup for Lazy and get \textbf{NeoVIM}
+running in a basic way.
+\begin{enumerate}
+    \item Make sure that \textbf{NeoVIM} is properly installed.
+    \item If the directory \mintinline{text}|~/.config/nvim| does not exist,
+    create it:
+    \begin{minted}[frame=single]{bash}
+$ mkdir -p ~/.config/nvim
+    \end{minted}
+    %
+    \item Create the file \mintinline{text}|~/.config/nvim/init.lua| file in the
+    directory:
+    \begin{minted}[frame=single]{bash}
+touch ~/.config/nvim/init.lua
+    \end{minted}
+    This is done for the modern version of \textbf{NeoVIM}, which uses the
+    \textit{lua} language for configuration.
+    %
+    \item Create the \mintinline{text}|~/.config/nvim/lua| directory, if 
+    it does not exist:
+    \begin{minted}[frame=single]{bash}
+mkdir ~/.config/nvim/lua
+    \end{minted}
+    %
+    \item In the \mintinline{text}|~/.config/nvim/lua| directory, create the
+    three directories:
+    \begin{itemize}
+        \item config
+        \item plugins
+        \item util
+    \end{itemize}
+    This is where the different configuration files will be stored. Since 
+    this is the default place where \textbf{NeoVim} will look for the different
+    files and directories, it is a good idea to keep the default structure.
+    %
+    \item At this point, the file and directory structure should look like:
+    \begin{minted}[frame=single]{bash}
+<root == ~/.config/nvim>
+| init.lua
+|_ lua
+    |_ config
+    |_ plugins
+    |_ util
+    \end{minted}
+    %
+    \item To dowload the packages and give them the basic configuration, create
+    an \mintinline{bash}|init.lua| in the \mintinline{bash}|config| directory: 
+    \begin{minted}[frame=single]{bash}
+<root == ~/.config/nvim>
+| init.lua
+|_ lua
+    |_ config
+    |   |_ init.lua    
+    |_ plugins
+    |_ util
+    \end{minted}
+    %
+    \item Open the file \mintinline{bash}|<root>/lua/config/init.lua| file and
+    add the following lines:
+    \begin{minted}[frame=single]{lua}
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Example using a list of specs with the default options
+-- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = " " 
+
+require("lazy").setup({
+  "folke/which-key.nvim",
+  { "folke/neoconf.nvim", cmd = "Neoconf" },
+  "folke/neodev.nvim",
+})
+    \end{minted}
+    %
+    \item Use \textbf{NeoVIM} to open the file and, in \textbf{NeoVIM} command
+    console mode (press \keystroke{esc}), run the command:
+    command:
+    \begin{minted}[frame=single]{text}
+~
+-------------------------------------
+:checkhealth
+    \end{minted}
+\end{enumerate}
+
