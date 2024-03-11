@@ -144,6 +144,33 @@ git submodule update --init --recursive
         \item Run \mintinline{bash}|git rm --cached <path_to_submodule>| (no trailing slash).
         \item Commit and delete the now untracked submodule files.
     \end{enumerate}
+    %
+    \item Updatin a submodule URL:
+    \begin{itemize}
+        \item Change the URL in the \mintinline{bash}|.gitmodules| file:
+        \begin{minted}[frame=single]{bash}
+[submodule "example/module]
+    path = example/module
+    url = ../../Libraries/internal/module.git
+        \end{minted}
+        that is, change the \mintinline{bash}|url| field.
+        %
+        \item Sync the submodule:
+        \begin{minted}[frame=single]{bash}
+git submodule sync
+        \end{minted}
+        %
+        \item Update the submodule:
+        \begin{minted}[frame=single]{bash}
+git submodule update --init --recursive
+        \end{minted}
+        %
+        \item Commit the changes:
+        \begin{minted}[frame=single]{bash}
+git commit -am "Updated submodule URL."
+        \end{minted}
+        at this point, the submodule URL has been updated.
+    \end{itemize}
 \end{itemize}
 
 
