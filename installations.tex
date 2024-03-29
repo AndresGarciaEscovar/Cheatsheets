@@ -139,3 +139,95 @@ require("lazy").setup({
     \end{minted}
 \end{enumerate}
 
+%///////////////////////////////////////////////////////////////////////////////
+% Miscellaneous - Setup SSH Keys to Connect Between Machines 
+%///////////////////////////////////////////////////////////////////////////////
+
+\subsection{Miscellaneous - Setup SSH Keys to Connect Between Machines}
+
+The instructions are for setting up SSH keys to connect between machines, it 
+should be useful for any Linux distribution, MacOS, and Windows.\bigbreak
+
+For this, we will need \textbf{OpenSSH} installed in both the origin and host
+machines. You can look for the installation instructions for your specific
+system.
+
+% Installation
+\subsubsection{Installation}
+
+We want to connect from \textit{machine$\_0$} to \textit{machine$\_1$} without having to type
+the password every time.\bigbreak
+
+\underline{\underline{Setup for machine$\_0$}}:
+
+\begin{itemize}
+    \item Create and ssh key; this key will have a private and public part.
+    The public part will be copied to the receiving machine, i.e.,
+    \textit{machine$\_1$}. T he private key will be kept in the sending machine,
+    i.e., \textit{machine$\_0$}:
+    \begin{minted}[frame=single]{bash}
+ssh-keygen -t rsa -b 4096
+    \end{minted}
+    This will create a key with 4096 bits of encryption (suggested).
+    \begin{itemize}
+        \item To add a comment at the end of the key, use the 
+        \mintinline{text}| -C| flag:
+        \begin{minted}[frame=single]{bash}
+ssh-keygen -t rsa -b 4096 -C "Comment here"
+        \end{minted}
+    \end{itemize}
+    \item The command will ask for a location to save the key, make sure to
+    choose the default location, which is \mintinline{text}|~/.ssh| directory;
+    the name you can choose:
+    \begin{minted}[frame=single]{text}
+Enter file in which to save the key (/home/user/.ssh/id_rsa): /home/user/.ssh/name
+    \end{minted}
+    \item If you want to add a passphrase to the key, you can do so. This will
+    add an extra layer of security to the key. If you do not want to add a
+    passphrase, just press \keystroke{enter}:
+    \begin{minted}[frame=single]{text}
+Enter passphrase (empty for no passphrase):
+    \end{minted}
+    \item The key will be created and saved in the location you specified. There
+    will be two files: \mintinline{text}|name| and \mintinline{text}|name.pub|,
+    where \mintinline{text}|name| is the private key and
+    \mintinline{text}|name.pub| is the public key.
+    \item Copy the public key such that it can be added to the receiving
+    machine.
+    \item To make the connection automatic, you can use the file 
+    \mintinline{text}|~/.ssh/config| to setup the connection. This file should
+    look like:
+    \begin{minted}[frame=single]{text}
+Host machine_1
+    HostName machine_1
+    User user
+    IdentityFile ~/.ssh/name
+    \end{minted}
+\end{itemize}
+
+\underline{\underline{Setup for machine$\_1$}}:
+
+\begin{itemize}
+    \item With the public key in hand, copy the contents of the file into the
+    \mintinline{text}|~/.ssh/authorized_keys| file in the receiving machine:
+    \begin{minted}[frame=single]{bash}
+cat name.pub >> ~/.ssh/authorized_keys
+    \end{minted}
+    \begin{itemize}
+        \item For Windows, in Powershell (admin mode), use the following:
+        \begin{minted}[frame=single]{bash}
+Get-Content name.pub >> ~/.ssh/authorized_keys
+        \end{minted}
+    \end{itemize}
+    \item Make sure that the permissions for the \mintinline{text}|~/.ssh|
+    directory are set to \mintinline{text}|700| and the permissions for the
+    \mintinline{text}|~/.ssh/authorized_keys| file are set to
+    \mintinline{text}|600|:
+    \begin{minted}[frame=single]{bash}
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+    \end{minted}
+    \begin{itemize}
+        \item For Windows, there is no need to change the permissions.
+    \end{itemize}
+\end{itemize}
