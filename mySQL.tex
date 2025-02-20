@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  "MySQL" Cheatsheet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\textquotedblleft MySQL\textquotedblright\ Cheatsheet}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+%
+%///////////////////////////////////////////////////////////////////////////////////////////////////
+
+\subsection{Login to MySQL}
+
+\begin{itemize}
+    %
+    \item Login to MySQL console:
+    \begin{minted}[frame=single]{bash}
+mysql -u root -p
+    \end{minted}
+    the password is in the notebook.
+\end{itemize}
+
+\subsection{Create a Database}
+
+The following Python instructions create a database called \textit{mydb} in MySQL:
+\begin{itemize}
+    \item Create a pip virtual environment and activate it:
+    \begin{minted}[frame=single]{bash}
+python3 -m venv venv
+source venv/bin/activate
+    \end{minted}
+    %
+    \item Install the packages that will act as the connectors:
+    \begin{minted}[frame=single]{bash}
+pip install mysql-connector mysql-connector-python mysql-connector-python-rf
+    \end{minted}
+    %
+    \item Using the following Python script, we can create a database called \textit{mydb}:
+    \begin{minted}[frame=single]{sql}
+# Import the connector.
+import mysql.connector as connector
+
+# Create the database connection.
+mydb = connector.connect(
+    auth_plugin="mysql_native_password",
+    host="localhost",
+    password="<Root Password for the MySQL Server>",
+    user="root",
+)
+
+# Run the commands.
+my_cursor = mydb.cursor()
+my_cursor.execute("CREATE DATABASE IF NOT EXISTS mydb")
+
+# Print the existing databases.
+my_cursor.execute("SHOW DATABASES")  # Show all the databases.
+
+for db in my_cursor:
+    # Names are encoded in bytes.
+    print(tuple(x.decode("utf-8") for x in  db))
+    \end{minted}
+    %
+    \item Run the script and the output should be:
+    \begin{minted}[frame=single]{bash}
+('information_schema',)
+('mydb',)
+('mysql',)
+('performance_schema',)
+('sys',)
+    \end{minted}
+    %
+    \item If the database appears in the list, then it has been created successfully.
+\end{itemize}
+
+\subsection{Integrate MySQL with Flask}
+
+\begin{itemize}
+    %
+    \item Install the package:
+    \begin{minted}[frame=single]{bash}
+sudo apt install libmysqlclient-dev
+    \end{minted}
+    this will install the MySQL client library.
+    \begin{minted}[frame=single]{bash}
+sudo apt install python3-dev
+    \end{minted}
+    this will install the Python development headers.
+    %
+    \item Install the Python packages:
+    \begin{minted}[frame=single]{bash}
+pip install cryptography Flask Flask-Login Flask-SocketIO Flask-SQLAlchemy mysqlclient pymysql
+    \end{minted}
+    With these packages installed, we can now use MySQL with Flask.
+\end{itemize}
