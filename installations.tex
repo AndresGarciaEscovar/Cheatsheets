@@ -1,13 +1,13 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % "Installations and Setup"
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\textquotedblleft Installations and Setup\textquotedblright\
 Cheatsheet
 }
 
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 % Linux - NeoVIM
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 
 \subsection{Linux - NeoVIM}
 
@@ -43,40 +43,38 @@ $ nvim --version
 \end{enumerate}
 
 \subsubsection{Setup - Lazy: Package Manager}
-This procedure is to perform the basic setup for Lazy and get \textbf{NeoVIM}
-running in a basic way.
+This procedure is to perform the basic setup for Lazy and get \textbf{NeoVIM} running in a basic
+way.
 \begin{enumerate}
     \item Make sure that \textbf{NeoVIM} is properly installed.
-    \item If the directory \mintinline{text}|~/.config/nvim| does not exist,
+    \item If the directory \nminted{text}{~/.config/nvim} does not exist,
     create it:
     \begin{minted}[frame=single]{bash}
 $ mkdir -p ~/.config/nvim
     \end{minted}
     %
-    \item Create the file \mintinline{text}|~/.config/nvim/init.lua| file in the
-    directory:
+    \item Create the file \nminted{text}{~/.config/nvim/init.lua} file in the directory:
     \begin{minted}[frame=single]{bash}
 touch ~/.config/nvim/init.lua
     \end{minted}
-    This is done for the modern version of \textbf{NeoVIM}, which uses the
-    \textit{lua} language for configuration.
+    This is done for the modern version of \textbf{NeoVIM}, which uses the \textit{lua} language for
+    configuration.
     %
-    \item Create the \mintinline{text}|~/.config/nvim/lua| directory, if
+    \item Create the \nminted{text}{~/.config/nvim/lua} directory, if
     it does not exist:
     \begin{minted}[frame=single]{bash}
 mkdir ~/.config/nvim/lua
     \end{minted}
     %
-    \item In the \mintinline{text}|~/.config/nvim/lua| directory, create the
-    three directories:
+    \item In the \nminted{text}{~/.config/nvim/lua} directory, create the three directories:
     \begin{itemize}
         \item config
         \item plugins
         \item util
     \end{itemize}
-    This is where the different configuration files will be stored. Since
-    this is the default place where \textbf{NeoVim} will look for the different
-    files and directories, it is a good idea to keep the default structure.
+    This is where the different configuration files will be stored. Since this is the default place
+    where \textbf{NeoVim} will look for the different files and directories, it is a good idea to
+    keep the default structure.
     %
     \item At this point, the file and directory structure should look like:
     \begin{minted}[frame=single]{bash}
@@ -88,8 +86,8 @@ mkdir ~/.config/nvim/lua
     |_ util
     \end{minted}
     %
-    \item To dowload the packages and give them the basic configuration, create
-    an \mintinline{bash}|init.lua| in the \mintinline{bash}|config| directory:
+    \item To dowload the packages and give them the basic configuration, create an
+    \nminted{bash}{init.lua} in the \nminted{bash}{config} directory:
     \begin{minted}[frame=single]{bash}
 <root == ~/.config/nvim>
 | init.lua
@@ -100,8 +98,8 @@ mkdir ~/.config/nvim/lua
     |_ util
     \end{minted}
     %
-    \item Open the file \mintinline{bash}|<root>/lua/config/init.lua| file and
-    add the following lines:
+    \item Open the file \nminted{bash}{<root>/lua/config/init.lua} file and add the following
+    lines:
     \begin{minted}[frame=single]{lua}
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -137,26 +135,29 @@ require("lazy").setup({
     \end{minted}
 \end{enumerate}
 
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 % Linux - TeXLive
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 
 \subsection{Linux - TeXLive}
 
-These are the instructions to install and set up \textbf{TeXLive} in a Linux machine
+These are the instructions to install and set up \textbf{TeXLive} in a Linux machine. The
+installation instructions can be found in:
+\begin{center}
+    \url{https://www.tug.org/texlive/quickinstall.html}
+\end{center}
 
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 % Miscellaneous - Setup SSH Keys to Connect Between Machines
-%///////////////////////////////////////////////////////////////////////////////
+%///////////////////////////////////////////////////////////////////////////////////////////////////
 
 \subsection{Miscellaneous - Setup SSH Keys to Connect Between Machines}
 
-The instructions are for setting up SSH keys to connect between machines, it
-should be useful for any Linux distribution, MacOS, and Windows.\bigbreak
+The instructions are for setting up SSH keys to connect between machines, it should be useful for
+any Linux distribution, MacOS, and Windows.\bigbreak
 
-For this, we will need \textbf{OpenSSH} installed in both the origin and host
-machines. You can look for the installation instructions for your specific
-system.
+For this, we will need \textbf{OpenSSH} installed in both the origin and host machines. You can look
+for the installation instructions for your specific system.
 
 % Installation
 \subsubsection{Installation}
@@ -167,42 +168,36 @@ the password every time.\bigbreak
 \underline{\underline{Setup for machine$\_0$}}:
 
 \begin{itemize}
-    \item Create and ssh key; this key will have a private and public part.
-    The public part will be copied to the receiving machine, i.e.,
-    \textit{machine$\_1$}. T he private key will be kept in the sending machine,
-    i.e., \textit{machine$\_0$}:
+    \item Create and ssh key; this key will have a private and public part. The public part will be
+    copied to the receiving machine, i.e., \textit{machine$\_1$}. The private key will be kept in
+    the sending machine, i.e., \textit{machine$\_0$}:
     \begin{minted}[frame=single]{bash}
 ssh-keygen -t rsa -b 4096
     \end{minted}
     This will create a key with 4096 bits of encryption (suggested).
     \begin{itemize}
-        \item To add a comment at the end of the key, use the
-        \mintinline{text}| -C| flag:
+        \item To add a comment at the end of the key, use the \nminted{text}{-C} flag:
         \begin{minted}[frame=single]{bash}
 ssh-keygen -t rsa -b 4096 -C "Comment here"
         \end{minted}
     \end{itemize}
-    \item The command will ask for a location to save the key, make sure to
-    choose the default location, which is \mintinline{text}|~/.ssh| directory;
-    the name you can choose:
+    \item The command will ask for a location to save the key, make sure to choose the default
+    location, which is \nminted{text}{~/.ssh} directory; the name you can choose:
     \begin{minted}[frame=single]{text}
 Enter file in which to save the key (/home/user/.ssh/id_rsa): /home/user/.ssh/name
     \end{minted}
-    \item If you want to add a passphrase to the key, you can do so. This will
-    add an extra layer of security to the key. If you do not want to add a
-    passphrase, just press \keystroke{enter}:
+    \item If you want to add a passphrase to the key, you can do so. This will add an extra layer of
+    security to the key. If you do not want to add a passphrase, just press \keystroke{enter}:
     \begin{minted}[frame=single]{text}
 Enter passphrase (empty for no passphrase):
     \end{minted}
-    \item The key will be created and saved in the location you specified. There
-    will be two files: \mintinline{text}|name| and \mintinline{text}|name.pub|,
-    where \mintinline{text}|name| is the private key and
-    \mintinline{text}|name.pub| is the public key.
+    \item The key will be created and saved in the location you specified. There will be two files:
+    \nminted{text}{name} and \nminted{text}{name.pub}, where \nminted{text}{name} is the private key
+    and \nminted{text}{name.pub} is the public key.
     \item Copy the public key such that it can be added to the receiving
     machine.
-    \item To make the connection automatic, you can use the file
-    \mintinline{text}|~/.ssh/config| to setup the connection. This file should
-    look like:
+    \item To make the connection automatic, you can use the file \nminted{text}{~/.ssh/config} to
+    setup the connection. This file should look like:
     \begin{minted}[frame=single]{text}
 Host machine_1
     HostName machine_1
@@ -215,7 +210,7 @@ Host machine_1
 
 \begin{itemize}
     \item With the public key in hand, copy the contents of the file into the
-    \mintinline{text}|~/.ssh/authorized_keys| file in the receiving machine:
+    \nminted{text}{~/.ssh/authorized_keys} file in the receiving machine:
     \begin{minted}[frame=single]{bash}
 cat name.pub >> ~/.ssh/authorized_keys
     \end{minted}
@@ -225,10 +220,9 @@ cat name.pub >> ~/.ssh/authorized_keys
 Get-Content name.pub >> ~/.ssh/authorized_keys
         \end{minted}
     \end{itemize}
-    \item Make sure that the permissions for the \mintinline{text}|~/.ssh|
-    directory are set to \mintinline{text}|700| and the permissions for the
-    \mintinline{text}|~/.ssh/authorized_keys| file are set to
-    \mintinline{text}|600|:
+    \item Make sure that the permissions for the \nminted{text}{~/.ssh} directory are set to
+    \nminted{text}{700} and the permissions for the \nminted{text}{~/.ssh/authorized_keys} file are
+    set to \nminted{text}{600}:
     \begin{minted}[frame=single]{bash}
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
