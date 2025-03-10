@@ -181,6 +181,24 @@ sudo perl ./install-tl --no-interaction
     \end{mintedbox}
     This will install \textbf{TeXLive} in the system. Depending on the system, this may take a
     while.
+    %
+    \item To finish the installation process, add the \textbf{TeXLive} binaries to the
+    \nminted{text}{PATH} variable. This can be done by adding the following lines to the
+    \nminted{text}{.bashrc} file:
+    \begin{mintedbox}{bash}
+export PATH=/usr/local/texlive/2025/texmf-dist/doc/man:$PATH
+export PATH=/usr/local/texlive/2025/texmf-dist/doc/info:$PATH
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+    \end{mintedbox}
+    where \nminted{text}{2025} is the version of \textbf{TeXLive} installed; in this case it
+    is \nminted{text}{2025} since the instructions are for the year \nminted{text}{2025}.
+    %
+    \item To make sure that telemanager is updating the packages from the correct repository when
+    running the \fditem{update.py} script, open the \fditem{update.py} file in the home directory
+    and change the variable \nminted{python}{_TLMGR_YEAR} to the correct year:
+    \begin{mintedbox}{python}
+_TLMGR_YEAR = "2025"
+    \end{mintedbox}
 \end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
