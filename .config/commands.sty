@@ -1,0 +1,365 @@
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environments.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Left-justified minipage.
+%
+% {#1} - Background color of the minipage; must be a color name.
+% {#2} - Width of the minipage; must be a decimal number between 0 and 1.
+%
+% Usage:
+%
+% \begin{bminipage}{#1}{#2}
+% \end{bminipage}
+%
+% Example:
+%
+% \begin{bminipage}{blue}{0.8}
+%     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+% \end{bminipage}
+%
+\newenvironment{bminipage}[2]
+{
+    \begin{center}
+        \begin{color}{#1}
+            \begin{boxedminipage}{#2\textwidth}
+                \begin{color}{black}
+}
+{
+                \end{color}
+            \end{boxedminipage}
+        \end{color}
+    \end{center}
+}
+
+%
+% Center-justified minipage.
+%
+% {#1} - Background color of the minipage; must be a color name.
+% {#2} - Width of the minipage; must be a decimal number between 0 and 1.
+%
+% Usage:
+%
+% \begin{cminipage}{#1}{#2}
+% \end{cminipage}
+%
+% Example:
+%
+% \begin{cminipage}{blue}{0.8}
+%     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+% \end{cminipage}
+%
+\newenvironment{cminipage}[2]
+{
+    \begin{center}
+        \begin{color}{#1}
+            \begin{boxedminipage}{#2\textwidth}
+                \begin{color}{black}
+                    \begin{center}
+}
+{
+                    \end{center}
+                \end{color}
+            \end{boxedminipage}
+        \end{color}
+    \end{center}
+}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros and/or New Commands.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////
+% Simple Macros.
+% //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+% Program/Software Names.
+\newcommand*\terminology[1]{\textit{#1}}
+
+% Software names.
+\newcommand*\Anaconda{\terminology{Anaconda}}
+\newcommand*\conda{\terminology{conda}}
+\newcommand*\git{\terminology{git}}
+\newcommand*\GoogleChrome{\terminology{Google Chrome}}
+\newcommand*\miniconda{\terminology{miniconda}}
+\newcommand*\PATH{\terminology{PATH}}
+\newcommand*\PyCharm{\terminology{PyCharm}}
+\newcommand*\venv{\terminology{venv}}
+
+% Acronyms/Abbreviations.
+\newcommand*\CPU{\textbf{CPU}}
+\newcommand*\GPU{\textbf{GPU}}
+\newcommand*\GUI{\textbf{GUI}}
+\newcommand*\HDD{\textbf{HDD}}
+\newcommand*\IDE{\textbf{IDE}}
+\newcommand*\IDEs{\textbf{IDE}s}
+\newcommand*\JIT{\textbf{JIT}}
+\newcommand*\NPM{\textbf{npm}}
+\newcommand*\OS{\textbf{OS}}
+\newcommand*\RAM{\textbf{RAM}}
+\newcommand*\SSDD{\textbf{SSD}}
+
+% Languages.
+\NewDocumentCommand{\plang}{O{} m}{%
+\ifthenelse{\equal{#1}{}}{\mintinline{text}|#2|}
+{\mintinline{text}|#2#1|}}
+
+\newcommand{\BOOTSTRAP}[1][]{\plang[#1]{Bootstrap}}
+\newcommand{\BASH}[1][]{\plang[#1]{Bash}}
+\newcommand{\C}[1][]{\plang[#1]{C}}
+\newcommand{\CHROMIUM}[1][]{\plang[#1]{Chromium}}
+\newcommand{\CPP}[1][]{\plang[#1]{C++}}
+\newcommand{\CSHARP}[1][]{\plang[#1]{C-Sharp}}
+\newcommand{\CSS}[1][]{\plang[#1]{CSS}}
+\newcommand{\DJANGO}[1][]{\plang[#1]{Django}}
+\newcommand{\ELECTRON}[1][]{\plang[#1]{Electron}}
+\newcommand{\FLASK}[1][]{\plang[#1]{Flask}}
+\newcommand{\FORTRAN}[1][]{\plang[#1]{Fortran}}
+\newcommand{\HTML}[1][]{\plang[#1]{HTML}}
+\newcommand{\JAVA}[1][]{\plang[#1]{Java}}
+\newcommand{\JAVASCRIPT}[1][]{\plang[#1]{Javascript}}
+\newcommand{\JINJA}[1][]{\plang[#1]{Jinja2}}
+\newcommand{\JSON}[1][]{\plang[#1]{JSON}}
+\newcommand{\MYSQL}[1][]{\plang[#1]{MySQL}}
+\newcommand{\NODE}[1][]{\plang[#1]{Node.js}}
+\newcommand{\POSTGRESQL}[1][]{\plang[#1]{PostgreSQL}}
+\newcommand{\PYTHON}[1][]{\plang[#1]{Python}}
+\newcommand{\REACT}[1][]{\plang[#1]{React}}
+\newcommand{\SASS}[1][]{\plang[#1]{Sass}}
+\newcommand{\SQLITE}[1][]{\plang[#1]{SQLite}}
+\newcommand{\TAILWIND}[1][]{\plang[#1]{Tailwind}}
+\newcommand{\VSCode}[1][]{\plang[#1]{VS Code}}
+\newcommand{\WSGI}[1][]{\plang[#1]{WSGI}}
+
+%
+% Single and double quoted text; shortens notation.
+%
+% {#1} - The text to be double/single quoted.
+%
+% Usage:
+%
+% \quoted{#1}
+%
+% Example:
+%
+% \quoted{Hello, World!}
+% \suoted{Hello, World!}
+%
+\newcommand*\quoted[1]{\textquotedblleft #1\textquotedblright}
+\newcommand*\suoted[1]{\textquotesingle #1'\textquotesingle}
+
+% Double, single quoted and unquoted mintinline text.
+%
+% {#1} - The language of the code, e.g., python, bash, etc.
+% {#2} - The code to be quoted.
+%
+% Usage:
+%
+% \nminted{#1}{#2}  % Unquoted.
+% \qminted{#1}{#2}  % Quoted.
+
+% Example(s):
+%
+% \nminted{cpp}{Hello, World!}  % Unquoted.
+% \qminted{cpp}{Hello, World!}  % Quoted.
+%
+\newcommand*\nminted[2]{\mintinline{#1}|#2|}
+\newcommand*\qminted[2]{\textquotedblleft\mintinline{#1}|#2|\textquotedblright}
+\newcommand*\sminted[2]{\textquotesingle\mintinline{#1}|#2|\textquotesingle}
+
+%
+% Key words and file/directory items.
+%
+% {#1} - The key word or file/directory item.
+% Usage:
+%
+% \kw{#1}
+% \fditem{#1}
+%
+% Example(s):
+%
+% \kw{else}  % Key word.
+% \fditem{test.js}  % Quoted.
+%
+\newcommand*\kw[1]{\mintinline{cpp}|#1|}
+\newcommand*\fditem[1]{\mintinline{bash}|#1|}
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////
+% Complex Macros.
+% //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+%
+% Produces a centered box with the: "IMAGE HERE!" text.
+%
+% Usage:
+%
+% \imageHere
+%
+% Example(s):
+%
+% \imageHere
+%
+\newcommand*\imageHere{%
+    \begin{cminipage}{black}{1.0}
+        IMAGE HERE!
+    \end{cminipage}
+}
+
+%
+% Produces a keystroke box with the given text.
+%
+% {#1} - The text to be displayed in the box; needs the \usetikzlibrary{shadows}
+%        package to be included in the preamble.
+%
+% Usage:
+%
+% \keystroke{#1}
+%
+% Example(s):
+%
+% \keystroke{Enter}
+%
+\newcommand*\keystroke[1]{%
+    \tikz[baseline=(key.base)]
+    \node[%
+        draw,
+        fill=white,
+        drop shadow={
+            shadow xshift=0.25ex,shadow yshift=-0.25ex,fill=black,opacity=0.75
+        },
+        rectangle,
+        rounded corners=2pt,
+        inner sep=1pt,
+        line width=0.5pt,
+        font=\scriptsize\sffamily
+    ](key){#1\strut};
+}
+
+%
+% Adds a figure to the document with the given caption and label. To use this
+% command, the image must be located in the images directory, in the root of
+% the project.
+%
+% Must use the \usepackage{ifthen} package in the preamble.
+%
+% {#1} - The width of the image; must be a decimal number between 0 and 1.
+% {#2} - The caption of the image.
+% {#3} - The label of the image.
+% {#4} - The name of the image file.
+%
+% Usage:
+%
+% \docImage[(#1,optional)][(#2,optional)][(#3,optional)]{#4}
+%
+% Example(s):
+%
+% \docImage{test.png}
+% \docImage[0.5]{test.png}
+% \docImage[0.5][This is a test caption.]{test.png}
+% \docImage[0.5][This is a test caption.][test]{test.png}
+% \docImage[][This is a test caption.][test]{test.png}
+% \docImage[][This is a test caption.]{test.png}
+% \docImage[][][test]{test.png}
+%
+\NewDocumentCommand{\docImage}{O{} O{} O{} m}{%
+    \begin{figure}[H]
+        \centering
+        % If the width is not provided, set it to 1.0\textwidth.
+        \ifthenelse{\equal{#1}{}}
+        {
+            \includegraphics[width=1.0\textwidth]{images/#4}
+        }
+        {
+            \includegraphics[width=#1\textwidth]{images/#4}
+        }
+
+        % If the caption is not provided, set it to empty.
+        \ifthenelse{\equal{#2}{}}
+        {
+            \captionsetup{labelformat=empty}
+            \caption[]{}
+            \addtocounter{figure}{-1}
+        }
+        {
+            \caption{#2}
+        }
+
+        % If the label is not provided, do nothing.
+        \ifthenelse{\equal{#3}{}}
+        {
+        }
+        {
+            \label{fig:#3}
+        }
+    \end{figure}
+}
+
+
+% Minted box with tcolorbox. This box does NOT include a line that separates the
+% title from the code. This is box with numbered lines.
+%
+% {#1} - Minted options, like linenos, etc.
+% {#2} - The language of the code, e.g., python, bash, etc.
+% {#3} - tcolorbox options, like colback, etc.
+%
+% Usage:
+%
+% \mintedbox[#1]{#2}[#3]
+%
+% Example(s):
+%
+% \mintedbox{python}
+% \mintedbox{python}[colback=red]
+% \mintedbox[linenos]{python}[colback=red]
+%
+% Additional comments:
+% - To add line numbers use the option linenos=true.
+% - To add a line that separates the title from the code use the option
+%   frame=topline.
+% - To add a title to the box use the option title={<name of the title>}.
+%
+% For example:
+%
+% \begin{mintedbox}[linenos,frame=topline]{python}[title={thebets!}]
+%     print("Hello, World!")
+% \end{mintedbox}
+%
+%
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+    listing only,        % Prevent tcolorbox from trying to compile the code.
+    breakable,           % Allow page breaks.
+    minted language=#2,  % Make the mandatory argument be the language.
+    minted options={%
+        % Default options.
+        numbersep=5pt,
+        gobble=0,
+        tabsize=4,
+        breaklines=true,
+        mathescape,
+        framesep=2mm,
+        % The options to pass to minted.
+        #1
+    },
+    % Remove borders.
+    top=0pt,
+    bottom=0pt,
+    left=0pt,
+    right=0pt,
+    % Make the corners sharp.
+    arc=0pt,
+    % Make the frame the same color as the background.
+    colframe=bg,
+    colback=bg,
+    % Make the title black.
+    coltitle=black,
+    % The options to pass to tcolorbox.
+    #3
+}

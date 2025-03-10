@@ -1,73 +1,10 @@
 % Document class.
 \documentclass[fleqn, letterpaper]{article}
 
-% Packages.
-\usepackage[dvipsnames]{xcolor}
-\usepackage{hyperref}
-\usepackage[all]{hypcap}
-\hypersetup{
-    colorlinks = true,
-    allbordercolors = {white},
-    allcolors = {black},
-    anchorcolor = {black},
-    citecolor = {black},
-    filecolor = {black},
-    linkcolor = {blue},
-    menucolor = {black},
-    runcolor = {black},
-    urlcolor = {blue},
-}
+\usepackage{./.config/packages}
+\usepackage{./.config/commands}
+\usepackage{./.config/document}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-
-\usepackage{amsmath}
-\usepackage{framed}
-\usepackage{minted}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{stackengine}
-\usepackage{tikz}
-
-\usetikzlibrary{shadows}
-
-% No indentation.
-\setlength\parindent{0cm}
-
-% Colors.
-\definecolor{DarkGreen}{rgb}{0.0,0.6,0.0}
-
-% Margins and general layout - Vertical variables.
-\topmargin=0mm
-\headheight=6mm
-\headsep=1.2cm
-\textheight=22.cm
-\footskip=1cm
-\linespread{1.0}
-\addtolength{\voffset}{-0.5in}
-
-% Margins and general layout - Horizontal variables.
-\oddsidemargin=2.5cm
-\evensidemargin=1.7 cm
-\textwidth=16.5cm
-\addtolength{\hoffset}{-1.0in}
-\setlength{\parindent}{0cm}
-
-% Other setup options.
-\newcommand*\keystroke[1]{%
-  \tikz[baseline=(key.base)]
-    \node[%
-      draw,
-      fill=white,
-      drop shadow={shadow xshift=0.25ex,shadow yshift=-0.25ex,fill=black,opacity=0.75},
-      rectangle,
-      rounded corners=2pt,
-      inner sep=1pt,
-      line width=0.5pt,
-      font=\scriptsize\sffamily
-    ](key) {#1\strut}
-  ;
-}
 
 % Title and author.
 \title{Cheat Sheets}

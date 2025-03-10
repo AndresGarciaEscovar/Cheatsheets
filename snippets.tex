@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Snippets" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft Snippets\textquotedblright\ Cheatsheet}
+\section{\quoted{Snippets} Cheatsheet}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 %  Conda - .bashrc conda Initialization
@@ -9,10 +9,9 @@
 
 \subsection{Conda - .bashrc conda Initialization}
 
-The following code initializes the \textquotedblleft conda\textquotedblright\ environment in the
-\textquotedblleft .bashrc\textquotedblright\ file. It also deactivates the \textquotedblleft 
-conda\textquotedblright\ environment.
-\begin{minted}[frame=single]{bash}
+The following code initializes the \quoted{conda} environment in the \quoted{.bashrc} file. It also
+deactivates the \quoted{conda} environment.
+\begin{mintedbox}{bash}
 # >>> conda initialize >>>
 _conda_setup="$('<path_to_environment>/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -29,10 +28,10 @@ unset _conda_setup
 
 # Deactivate conda.
 conda deactivate
-\end{minted}
+\end{mintedbox}
 
 example:
-\begin{minted}[frame=single]{bash}
+\begin{mintedbox}{bash}
 # >>> conda initialize >>>
 _conda_setup="$('/home/hp/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -49,7 +48,7 @@ unset _conda_setup
 
 # Deactivate conda.
 conda deactivate
-\end{minted}
+\end{mintedbox}
 
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,11 +58,10 @@ conda deactivate
 \newpage
 \subsection{Linux - Get Files from HTTP/FTP Site}
 
-To get files from an FTP or HTTP site, a request can be made using the \mintinline{bash}|wget|
-command:
-\begin{minted}[frame=single]{bash}
+To get files from an FTP or HTTP site, a request can be made using the \qminted{bash}{wget} command:
+\begin{mintedbox}{bash}
 wget --recursive --no-parent <url>/<valid_file/directory_name>
-\end{minted}
+\end{mintedbox}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 %  Linux - Untar tar.gz Files.
@@ -71,16 +69,16 @@ wget --recursive --no-parent <url>/<valid_file/directory_name>
 
 \subsection{Linux - Untar tar.gz Files}
 
-To untar files with the \mintinline{bash}|tar.gz| extension, the following command can be used:
-\begin{minted}[frame=single]{bash}
+To untar files with the \qminted{bash}{tar.gz} extension, the following command can be used:
+\begin{mintedbox}{bash}
 tar -xvzf <file.tar.gz>
-\end{minted}
+\end{mintedbox}
 The flags mean:
 \begin{itemize}
-    \item \mintinline{bash}|-x|: Extract files from an archive.
-    \item \mintinline{bash}|-v|: Verbose mode, print the names of the files as they are extracted.
-    \item \mintinline{bash}|-z|: Filter the archive through gzip.
-    \item \mintinline{bash}|-f|: Use archive file or device ARCHIVE.
+    \item \qminted{bash}{-x}: Extract files from an archive.
+    \item \qminted{bash}{-v}: Verbose mode, print the names of the files as they are extracted.
+    \item \qminted{bash}{-z}: Filter the archive through gzip.
+    \item \qminted{bash}{-f}: Use archive file or device ARCHIVE.
 \end{itemize}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,7 +89,7 @@ The flags mean:
 \subsection{Python - Live Elapsed Time}
 
 For a subprocess:
-\begin{minted}[frame=single]{python3}
+\begin{mintedbox}{python3}
 """
     Code to run a live timer for a subprocess.
 """
@@ -135,9 +133,9 @@ while True:
         seconds = (minutes - int(minutes)) * 60
         print(f"\rElapsed time: {int(minutes):02d}:{int(seconds):02d}", end="")
 
-\end{minted}
+\end{mintedbox}
 \newpage
-\begin{minted}[frame=single]{python3}
+\begin{mintedbox}{python3}
 
     # Only spawn one process.
     if flag:
@@ -148,7 +146,7 @@ while True:
             command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
         )
         continue
-    
+
     # Exit the loop if the process is done.
     if proc.returncode is not None:
         fstring = f"\rElapsed time: {int(minutes):02d}:{int(seconds):02d}"
@@ -157,7 +155,7 @@ while True:
 # Print the final time.
 print(f"\r{fstring}")
 
-\end{minted}
+\end{mintedbox}
 \subsection*{Things to Consider}
 \begin{itemize}
     \item Remember to include a carriage return so the string is always removed.

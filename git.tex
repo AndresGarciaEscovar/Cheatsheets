@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  "git" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft git\textquotedblright\ Cheatsheet}
+\section{\quoted{git} Cheatsheet}
 
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,31 +12,31 @@
 \begin{itemize}
     %
     \item Clone a repository:
-    \begin{minted}[frame=single]{bash}
-git clone <url>  
-    \end{minted}
+    \begin{mintedbox}{bash}
+git clone <url>
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git clone git@github.com:Python-World/example.git
-    \end{minted}
+    \end{mintedbox}
     %
     \item Clone a repository from a specific branch:
-    \begin{minted}[frame=single]{bash}
-git clone -b <branch> --single-branch <url>  
-    \end{minted}
+    \begin{mintedbox}{bash}
+git clone -b <branch> --single-branch <url>
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git clone -b demo --single-branch git@github.com:Python-World/example.git
-    \end{minted}
+    \end{mintedbox}
         %
     \item Clone a repository with submodules:
-    \begin{minted}[frame=single]{bash}
-git clone --recurse-submodules <url>  
-    \end{minted}
+    \begin{mintedbox}{bash}
+git clone --recurse-submodules <url>
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git clone --recurse-submodules git@github.com:Python-World/example.git
-    \end{minted}
+    \end{mintedbox}
 \end{itemize}
 
 
@@ -48,22 +48,22 @@ git clone --recurse-submodules git@github.com:Python-World/example.git
 \begin{itemize}
     %
     \item Delete a local branch:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git branch -d <branch>
-    \end{minted}
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git branch -d demo
-    \end{minted}
+    \end{mintedbox}
     %
     \item Delete a remote branch:
-    \begin{minted}[frame=single]{bash}
-git push origin --delete <branch> 
-    \end{minted}
+    \begin{mintedbox}{bash}
+git push origin --delete <branch>
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git push origin --delete demo
-    \end{minted}
+    \end{mintedbox}
 \end{itemize}
 
 
@@ -75,32 +75,32 @@ git push origin --delete demo
 \begin{itemize}
     %
     \item Update the list of remote branches:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git remote update origin --prune
-    \end{minted}
+    \end{mintedbox}
     %
     \item Update branches with conflicts:
     \begin{enumerate}
-        \item Checkout the branch to be updated, call it \mintinline{bash}|<branch_1>|:
-        \begin{minted}[frame=single]{bash}
+        \item Checkout the branch to be updated, call it \nminted{bash}{<branch_1>}:
+        \begin{mintedbox}{bash}
 git checkout <branch_1>
-        \end{minted}
-        \item Update the local branch, i.e., update \mintinline{bash}|<branch_1>|:
-        \begin{minted}[frame=single]{bash}
+        \end{mintedbox}
+        \item Update the local branch, i.e., update \nminted{bash}{<branch_1>}:
+        \begin{mintedbox}{bash}
 git fetch origin
-        \end{minted}
-        \item Merge merge \mintinline{bash}|<branch_2>| into \mintinline{bash}|<branch_1>|:
-        \begin{minted}[frame=single]{bash}
+        \end{mintedbox}
+        \item Merge merge \nminted{bash}{<branch_2>} into \nminted{bash}{<branch_1>}:
+        \begin{mintedbox}{bash}
 git merge origin/<branch_2>  # branch 2 -> branch 1
-        \end{minted}
+        \end{mintedbox}
         \item Solve conflicts.:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 git mergetool  # Select the changes to keep.
-        \end{minted}
+        \end{mintedbox}
         \item Commit the changes:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 git commit -m "Solved conflicts."
-        \end{minted}
+        \end{mintedbox}
     \end{enumerate}
 \end{itemize}
 
@@ -113,62 +113,62 @@ git commit -m "Solved conflicts."
 \begin{itemize}
     %
     \item Add a submodule:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git submodule add <url>
-    \end{minted}
+    \end{mintedbox}
     For example:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git submodule add git@github.com:Module-Folder/example.git
-    \end{minted}
+    \end{mintedbox}
     %
     \item Add a submodule with a custom name:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git submodule add --name <name> <url> <path>
-    \end{minted}
-    For example, we want to add a module named \mintinline{bash}|example|, in the
-    \mintinline{bash}|tests| directory, that is located in the current
+    \end{mintedbox}
+    For example, we want to add a module named \nminted{bash}{example}, in the
+    \nminted{bash}{tests} directory, that is located in the current
     directory:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git submodule add tests git@github.com:Python-World/tests-example.git ./tests
-    \end{minted}
+    \end{mintedbox}
     %
     \item Update submodules:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git submodule update --init --recursive
-    \end{minted}
+    \end{mintedbox}
     %
     \item Remove a submodule:
     \begin{enumerate}
-        \item Delete the relevant section from the \mintinline{bash}|.gitmodules| file.
-        \item Delete the relevant section from \mintinline{bash}|.git/config| directory.
-        \item Run \mintinline{bash}|git rm --cached <path_to_submodule>| (no trailing slash).
+        \item Delete the relevant section from the \nminted{bash}{.gitmodules} file.
+        \item Delete the relevant section from \nminted{bash}{.git/config} directory.
+        \item Run \nminted{bash}{git rm --cached <path_to_submodule>} (no trailing slash).
         \item Commit and delete the now untracked submodule files.
     \end{enumerate}
     %
     \item Updating a submodule URL:
     \begin{itemize}
-        \item Change the URL in the \mintinline{bash}|.gitmodules| file:
-        \begin{minted}[frame=single]{bash}
+        \item Change the URL in the \nminted{bash}{.gitmodules} file:
+        \begin{mintedbox}{bash}
 [submodule "example/module]
     path = example/module
     url = ../../Libraries/internal/module.git
-        \end{minted}
-        that is, change the \mintinline{bash}|url| field.
+        \end{mintedbox}
+        that is, change the \nminted{bash}{url} field.
         %
         \item Sync the submodule:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 git submodule sync
-        \end{minted}
+        \end{mintedbox}
         %
         \item Update the submodule:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 git submodule update --init --recursive
-        \end{minted}
+        \end{mintedbox}
         %
         \item Commit the changes:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 git commit -m "Updated submodule URL."
-        \end{minted}
+        \end{mintedbox}
         at this point, the submodule URL has been updated.
     \end{itemize}
 \end{itemize}
@@ -182,25 +182,25 @@ git commit -m "Updated submodule URL."
 \begin{itemize}
     %
     \item Create a local branch:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git checkout <local_branch>
-    \end{minted}
-    add the \mintinline{bash}|-b| flag to switch to the branch inmediately after creating it:
-    \begin{minted}[frame=single]{bash}
+    \end{mintedbox}
+    add the \nminted{bash}{-b} flag to switch to the branch inmediately after creating it:
+    \begin{mintedbox}{bash}
 git checkout -b <local_branch>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Branch from target branch to another branch:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git checkout <new_branch> <target_branch>
-    \end{minted}
-    add the \mintinline{bash}|-b| flag to switch to the branch inmediately after creating it:
-    \begin{minted}[frame=single]{bash}
+    \end{mintedbox}
+    add the \nminted{bash}{-b} flag to switch to the branch inmediately after creating it:
+    \begin{mintedbox}{bash}
 git checkout -b <new_branch> <target_branch>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Track a remote branch:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 git branch -u origin/<branch>
-    \end{minted}
+    \end{mintedbox}
 \end{itemize}

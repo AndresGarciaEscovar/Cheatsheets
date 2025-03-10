@@ -1,0 +1,62 @@
+%
+% Contains the common packages used in the LaTeX documents.
+%
+
+
+% Mandatory to import in the given order.
+\usepackage[dvipsnames]{xcolor}  % For using colored text.
+\usepackage{hyperref}            % For custom formatted and colored hyperlinks.
+\usepackage[all]{hypcap}         % Corrects the hyperlinks to figures and tables.
+
+\usepackage[utf8]{inputenc}  % For typing accented characters.
+\usepackage[T1]{fontenc}     % For using the T1 font encoding.
+
+% Other packages.
+\usepackage{amsmath}          % For typing improved mathematical formulas.
+\usepackage{boxedminipage}    % Wraps a minipage within an \fbox.
+\usepackage{caption}          % To customise the captions in floating environments.
+\usepackage{float}            % Improves the interface for defining floating objects.
+\usepackage{framed}           % To create customized frames that can break across pages.
+\usepackage{graphicx}         % For including images in the document.
+\usepackage{ifthen}           % For conditional statements in macros.
+\usepackage{listings}         % For including source code in the document; complements the minted package.
+\usepackage{minted}           % For highlighting code.
+\usepackage{multicol}         % For creating multi-column documents.
+\usepackage{multirow}         % For creating tabular cells spanning multiple rows.
+\usepackage{stackengine}      % For stacking objects vertically.
+\usepackage{tikz}             % For creating graphics programmatically.
+\usepackage{xparse}           % For creating custom commands.
+
+\usepackage[minted,xparse,breakable]{tcolorbox}  % For creating colored boxes around text.
+
+
+%
+% Colors.
+%
+
+
+\definecolor{DarkGreen}{rgb}{0.0,0.6,0.0}
+\definecolor{bg}{gray}{0.97}
+
+
+%
+% Packages Settings
+%
+
+
+% Hyperref.
+\hypersetup{
+    colorlinks = true,
+    allbordercolors = {white},
+    allcolors = {black},
+    anchorcolor = {black},
+    citecolor = {black},
+    filecolor = {black},
+    linkcolor = {blue},
+    menucolor = {black},
+    runcolor = {black},
+    urlcolor = {blue},
+}
+
+% Tikz.
+\usetikzlibrary{shadows}   % For creating shadows in tikz pictures.
