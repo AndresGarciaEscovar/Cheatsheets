@@ -18,9 +18,9 @@ Cheatsheet
     %
     \item To install \textbf{NeoVIM} there are many methods. The suggested method is to use the
     \textit{snap} store, or equivalent, by using the command:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 $ sudo snap install nvim --classic
-    \end{minted}
+    \end{mintedbox}
     This will install \textbf{NeoVIM} in the system.
     %
     \item The \textit{--classic} flag is used to install the software with full access to the
@@ -30,14 +30,14 @@ $ sudo snap install nvim --classic
     \item Make sure that the
     \textit{.bashrc} has the snap store path in the \nminted{text}{PATH} variable at the start of
     the list:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 export PATH=/snap/bin:$PATH
-    \end{minted}
+    \end{mintedbox}
     %
     \item To make sure the installation was successful, run the command:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 $ nvim --version
-    \end{minted}
+    \end{mintedbox}
     Make sure that this is not a \quoted{developer version}; i.e., the latest stable version.
     %
 \end{enumerate}
@@ -49,22 +49,22 @@ way.
     \item Make sure that \textbf{NeoVIM} is properly installed.
     \item If the directory \nminted{text}{~/.config/nvim} does not exist,
     create it:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 $ mkdir -p ~/.config/nvim
-    \end{minted}
+    \end{mintedbox}
     %
     \item Create the file \nminted{text}{~/.config/nvim/init.lua} file in the directory:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 touch ~/.config/nvim/init.lua
-    \end{minted}
+    \end{mintedbox}
     This is done for the modern version of \textbf{NeoVIM}, which uses the \textit{lua} language for
     configuration.
     %
     \item Create the \nminted{text}{~/.config/nvim/lua} directory, if
     it does not exist:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 mkdir ~/.config/nvim/lua
-    \end{minted}
+    \end{mintedbox}
     %
     \item In the \nminted{text}{~/.config/nvim/lua} directory, create the three directories:
     \begin{itemize}
@@ -77,18 +77,18 @@ mkdir ~/.config/nvim/lua
     keep the default structure.
     %
     \item At this point, the file and directory structure should look like:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 <root == ~/.config/nvim>
 | init.lua
 |_ lua
     |_ config
     |_ plugins
     |_ util
-    \end{minted}
+    \end{mintedbox}
     %
     \item To dowload the packages and give them the basic configuration, create an
     \nminted{bash}{init.lua} in the \nminted{bash}{config} directory:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 <root == ~/.config/nvim>
 | init.lua
 |_ lua
@@ -96,11 +96,11 @@ mkdir ~/.config/nvim/lua
     |   |_ init.lua
     |_ plugins
     |_ util
-    \end{minted}
+    \end{mintedbox}
     %
     \item Open the file \nminted{bash}{<root>/lua/config/init.lua} file and add the following
     lines:
-    \begin{minted}[frame=single]{lua}
+    \begin{mintedbox}{lua}
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -123,16 +123,16 @@ require("lazy").setup({
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   "folke/neodev.nvim",
 })
-    \end{minted}
+    \end{mintedbox}
     %
     \item Use \textbf{NeoVIM} to open the file and, in \textbf{NeoVIM} command
     console mode (press \keystroke{esc}), run the command:
     command:
-    \begin{minted}[frame=single]{text}
+    \begin{mintedbox}{text}
 ~
 -------------------------------------
 :checkhealth
-    \end{minted}
+    \end{mintedbox}
 \end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,6 +146,28 @@ installation instructions can be found in:
 \begin{center}
     \url{https://www.tug.org/texlive/quickinstall.html}
 \end{center}
+\begin{enumerate}
+    \item Go to the directory where you want to download the package:
+    \begin{mintedbox}{bash}
+cd /path/to/directory
+    \end{mintedbox}
+    %
+    \item Navigate to the aforementioned web page and go to the \quoted{\textbf{tl;dr; Unix(ish)}}
+    section to follow the instructions; repeated here for convenience.
+    %
+    \item Donwload the latest TeXLive package from one of the two sources:
+    \begin{itemize}
+        \item Use the \nminted{bash}{wget} command to download the package:
+        \begin{mintedbox}{bash}
+wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        \end{mintedbox}
+        \item Use the \nminted{bash}{curl} command to download the package:
+        \begin{mintedbox}{bash}
+curl -L -o install-tl-unx.tar.gz \
+https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        \end{mintedbox}
+    \end{itemize}
+\end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 % Miscellaneous - Setup SSH Keys to Connect Between Machines
@@ -171,26 +193,26 @@ the password every time.\bigbreak
     \item Create and ssh key; this key will have a private and public part. The public part will be
     copied to the receiving machine, i.e., \textit{machine$\_1$}. The private key will be kept in
     the sending machine, i.e., \textit{machine$\_0$}:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 ssh-keygen -t rsa -b 4096
-    \end{minted}
+    \end{mintedbox}
     This will create a key with 4096 bits of encryption (suggested).
     \begin{itemize}
         \item To add a comment at the end of the key, use the \nminted{text}{-C} flag:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 ssh-keygen -t rsa -b 4096 -C "Comment here"
-        \end{minted}
+        \end{mintedbox}
     \end{itemize}
     \item The command will ask for a location to save the key, make sure to choose the default
     location, which is \nminted{text}{~/.ssh} directory; the name you can choose:
-    \begin{minted}[frame=single]{text}
+    \begin{mintedbox}{text}
 Enter file in which to save the key (/home/user/.ssh/id_rsa): /home/user/.ssh/name
-    \end{minted}
+    \end{mintedbox}
     \item If you want to add a passphrase to the key, you can do so. This will add an extra layer of
     security to the key. If you do not want to add a passphrase, just press \keystroke{enter}:
-    \begin{minted}[frame=single]{text}
+    \begin{mintedbox}{text}
 Enter passphrase (empty for no passphrase):
-    \end{minted}
+    \end{mintedbox}
     \item The key will be created and saved in the location you specified. There will be two files:
     \nminted{text}{name} and \nminted{text}{name.pub}, where \nminted{text}{name} is the private key
     and \nminted{text}{name.pub} is the public key.
@@ -198,12 +220,12 @@ Enter passphrase (empty for no passphrase):
     machine.
     \item To make the connection automatic, you can use the file \nminted{text}{~/.ssh/config} to
     setup the connection. This file should look like:
-    \begin{minted}[frame=single]{text}
+    \begin{mintedbox}{text}
 Host machine_1
     HostName machine_1
     User user
     IdentityFile ~/.ssh/name
-    \end{minted}
+    \end{mintedbox}
 \end{itemize}
 
 \underline{\underline{Setup for machine$\_1$}}:
@@ -211,23 +233,21 @@ Host machine_1
 \begin{itemize}
     \item With the public key in hand, copy the contents of the file into the
     \nminted{text}{~/.ssh/authorized_keys} file in the receiving machine:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 cat name.pub >> ~/.ssh/authorized_keys
-    \end{minted}
+    \end{mintedbox}
     \begin{itemize}
         \item For Windows, in Powershell (admin mode), use the following:
-        \begin{minted}[frame=single]{bash}
+        \begin{mintedbox}{bash}
 Get-Content name.pub >> ~/.ssh/authorized_keys
-        \end{minted}
+        \end{mintedbox}
     \end{itemize}
     \item Make sure that the permissions for the \nminted{text}{~/.ssh} directory are set to
     \nminted{text}{700} and the permissions for the \nminted{text}{~/.ssh/authorized_keys} file are
     set to \nminted{text}{600}:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
-    \end{minted}
-    \begin{itemize}
-        \item For Windows, there is no need to change the permissions.
-    \end{itemize}
+    \end{mintedbox}
+    For Windows there is no need to change the permissions.
 \end{itemize}
