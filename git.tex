@@ -81,15 +81,15 @@ git remote update origin --prune
     %
     \item Update branches with conflicts:
     \begin{enumerate}
-        \item Checkout the branch to be updated, call it \mintinline{bash}|<branch_1>|:
+        \item Checkout the branch to be updated, call it \nminted{bash}{<branch_1>}:
         \begin{mintedbox}{bash}
 git checkout <branch_1>
         \end{mintedbox}
-        \item Update the local branch, i.e., update \mintinline{bash}|<branch_1>|:
+        \item Update the local branch, i.e., update \nminted{bash}{<branch_1>}:
         \begin{mintedbox}{bash}
 git fetch origin
         \end{mintedbox}
-        \item Merge merge \mintinline{bash}|<branch_2>| into \mintinline{bash}|<branch_1>|:
+        \item Merge merge \nminted{bash}{<branch_2>} into \nminted{bash}{<branch_1>}:
         \begin{mintedbox}{bash}
 git merge origin/<branch_2>  # branch 2 -> branch 1
         \end{mintedbox}
@@ -125,8 +125,8 @@ git submodule add git@github.com:Module-Folder/example.git
     \begin{mintedbox}{bash}
 git submodule add --name <name> <url> <path>
     \end{mintedbox}
-    For example, we want to add a module named \mintinline{bash}|example|, in the
-    \mintinline{bash}|tests| directory, that is located in the current
+    For example, we want to add a module named \nminted{bash}{example}, in the
+    \nminted{bash}{tests} directory, that is located in the current
     directory:
     \begin{mintedbox}{bash}
 git submodule add tests git@github.com:Python-World/tests-example.git ./tests
@@ -139,21 +139,21 @@ git submodule update --init --recursive
     %
     \item Remove a submodule:
     \begin{enumerate}
-        \item Delete the relevant section from the \mintinline{bash}|.gitmodules| file.
-        \item Delete the relevant section from \mintinline{bash}|.git/config| directory.
-        \item Run \mintinline{bash}|git rm --cached <path_to_submodule>| (no trailing slash).
+        \item Delete the relevant section from the \nminted{bash}{.gitmodules} file.
+        \item Delete the relevant section from \nminted{bash}{.git/config} directory.
+        \item Run \nminted{bash}{git rm --cached <path_to_submodule>} (no trailing slash).
         \item Commit and delete the now untracked submodule files.
     \end{enumerate}
     %
     \item Updating a submodule URL:
     \begin{itemize}
-        \item Change the URL in the \mintinline{bash}|.gitmodules| file:
+        \item Change the URL in the \nminted{bash}{.gitmodules} file:
         \begin{mintedbox}{bash}
 [submodule "example/module]
     path = example/module
     url = ../../Libraries/internal/module.git
         \end{mintedbox}
-        that is, change the \mintinline{bash}|url| field.
+        that is, change the \nminted{bash}{url} field.
         %
         \item Sync the submodule:
         \begin{mintedbox}{bash}
@@ -185,7 +185,7 @@ git commit -m "Updated submodule URL."
     \begin{mintedbox}{bash}
 git checkout <local_branch>
     \end{mintedbox}
-    add the \mintinline{bash}|-b| flag to switch to the branch inmediately after creating it:
+    add the \nminted{bash}{-b} flag to switch to the branch inmediately after creating it:
     \begin{mintedbox}{bash}
 git checkout -b <local_branch>
     \end{mintedbox}
@@ -194,7 +194,7 @@ git checkout -b <local_branch>
     \begin{mintedbox}{bash}
 git checkout <new_branch> <target_branch>
     \end{mintedbox}
-    add the \mintinline{bash}|-b| flag to switch to the branch inmediately after creating it:
+    add the \nminted{bash}{-b} flag to switch to the branch inmediately after creating it:
     \begin{mintedbox}{bash}
 git checkout -b <new_branch> <target_branch>
     \end{mintedbox}

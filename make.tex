@@ -205,36 +205,36 @@ one two:
 \subsection{Implict Rules}
 There are some implicit rules when using \quoted{makefiles}:
 \begin{itemize}
-    \item Compiling a C program: \mintinline{text}|n.o| is made automatically
-    from \mintinline{text}|n.c| with a command of the form:
+    \item Compiling a C program: \nminted{text}{n.o} is made automatically
+    from \nminted{text}{n.c} with a command of the form:
     \begin{mintedbox}{bash}
 $(CC) -c $(CPPFLAGS) $(CFLAGS) $^ -o $@
     \end{mintedbox}
-    \item Compiling a C++ program: \mintinline{text}|n.o| is made automatically
-    from \mintinline{text}|n.cc| or \mintinline{text}|n.ccp| with a command of
+    \item Compiling a C++ program: \nminted{text}{n.o} is made automatically
+    from \nminted{text}{n.cc} or \nminted{text}{n.ccp} with a command of
     the form:
     \begin{mintedbox}{bash}
 $(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
     \end{mintedbox}
-    \item Linking a single object file: \mintinline{text}|n| is made
-    automatically from \mintinline{text}|n.o| by running the command:
+    \item Linking a single object file: \nminted{text}{n} is made
+    automatically from \nminted{text}{n.o} by running the command:
     \begin{mintedbox}{bash}
 $(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
     \end{mintedbox}
     where:
     \begin{itemize}
-        \item \mintinline{text}|CC|: Program for compiling C programs; default
-        is \mintinline{text}|cc|.
-        \item \mintinline{text}|CXX|: Program for compiling C++ programs;
-        default is \mintinline{text}|g++|.
-        \item \mintinline{text}|CFLAGS|: Extra flags to give to the C compiler.
-        \item \mintinline{text}|CXXFLAGS|: Extra flags to give to the C++
+        \item \nminted{text}{CC}: Program for compiling C programs; default
+        is \nminted{text}{cc}.
+        \item \nminted{text}{CXX}: Program for compiling C++ programs;
+        default is \nminted{text}{g++}.
+        \item \nminted{text}{CFLAGS}: Extra flags to give to the C compiler.
+        \item \nminted{text}{CXXFLAGS}: Extra flags to give to the C++
         compiler.
-        \item \mintinline{text}|CXXFLAGS|: Extra flags to give to the C++
+        \item \nminted{text}{CXXFLAGS}: Extra flags to give to the C++
         preprocessor.
-        \item \mintinline{text}|LDFLAGS|: Extra flags to give to compilers when
+        \item \nminted{text}{LDFLAGS}: Extra flags to give to compilers when
         they are supposed to invoke the linker. For example,
-        \mintinline{text}|-L|.
+        \nminted{text}{-L}.
     \end{itemize}
 \end{itemize}
 
