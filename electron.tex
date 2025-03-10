@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  "electron" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft electron\textquotedblright\ Cheatsheet}
+\section{\quoted{electron} Cheatsheet}
 
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,60 +17,60 @@
 \subsubsection{Installation}
 
 It will be assumed that the user already has a working
-\mintinline{text}|electron| application. These steps must be followed in the given order:
+\nminted{text}{electron} application. These steps must be followed in the given order:
 
 \begin{enumerate}
     %
-    \item Make sure you have \mintinline{text}|rpm| installed:
-    \begin{minted}[frame=single]{bash}
+    \item Make sure you have \nminted{text}{rpm} installed:
+    \begin{mintedbox}{bash}
 sudo apt install rpm
-    \end{minted}
+    \end{mintedbox}
     %
     \item Navigate to the root directory of the application, i.e., where the
-    \mintinline{text}|main.js| file is located, that will be the place where the
-    \mintinline{text}|package.json| file will be created:
-    \begin{minted}[frame=single]{bash}
+    \nminted{text}{main.js} file is located, that will be the place where the
+    \nminted{text}{package.json} file will be created:
+    \begin{mintedbox}{bash}
 cd /path/to/app
-    \end{minted}
+    \end{mintedbox}
     %
-    \item install the \mintinline{text}|electron-forge| package to use in the command line:
-    \begin{minted}[frame=single]{bash}
+    \item install the \nminted{text}{electron-forge} package to use in the command line:
+    \begin{mintedbox}{bash}
 npm install -D @electron-forge/cli
-    \end{minted}
+    \end{mintedbox}
     %
-    \item Initialize the \mintinline{text}|electron-forge| project:
-    \begin{minted}[frame=single]{bash}
+    \item Initialize the \nminted{text}{electron-forge} project:
+    \begin{mintedbox}{bash}
 npm exe -package=@electron-forge/cli import -c "electron-forge import"
-    \end{minted}
-    This will create a \mintinline{text}|forge.config.js| file and will add entries to the
-    \mintinline{text}|package.json| file; all needed to package the application.
+    \end{mintedbox}
+    This will create a \nminted{text}{forge.config.js} file and will add entries to the
+    \nminted{text}{package.json} file; all needed to package the application.
     %
-    \item In the \mintinline{text}|package,json| file, make sure that the \mintinline{text}|scripts|
+    \item In the \nminted{text}{package,json} file, make sure that the \nminted{text}{scripts}
     section includes the commands to start the application packaging:
-    \begin{minted}[frame=single]{json}
+    \begin{mintedbox}{json}
 "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
 }
-    \end{minted}
+    \end{mintedbox}
     %
-    \item Make sure that the \mintinline{text}|@electron-forge/plugins-fuses| package is installed:
-    \begin{minted}[frame=single]{bash}
+    \item Make sure that the \nminted{text}{@electron-forge/plugins-fuses} package is installed:
+    \begin{mintedbox}{bash}
 npm install -D @electron-forge/plugins-fuses
-    \end{minted}
+    \end{mintedbox}
     This will install more configuration files that will be needed to package the application.
     %
-    \item Install the \mintinline{text}|electron-squirrel-startup| package:
-    \begin{minted}[frame=single]{bash}
+    \item Install the \nminted{text}{electron-squirrel-startup} package:
+    \begin{mintedbox}{bash}
 npm install electron-squirrel-startup
-    \end{minted}
+    \end{mintedbox}
     This must be a required package for all projects that need to be packaged; notice how there
-    is no \mintinline{text}|--save-dev| or \mintinline{text}|-D| flag.
+    is no \nminted{text}{--save-dev} or \nminted{text}{-D} flag.
     %
-    \item In the \mintinline{text}|forge.config.js| file make sure that the name of the authors
+    \item In the \nminted{text}{forge.config.js} file make sure that the name of the authors
     and description of the application are included:
-    \begin{minted}[frame=single]{javascript}
+    \begin{mintedbox}{javascript}
 module.exports = {
     ...
     makers: [
@@ -85,24 +85,24 @@ module.exports = {
     ],
     ...
 }
-    \end{minted}
+    \end{mintedbox}
     %
     \item Package the application:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 npm run make
-    \end{minted}
-    This will create a \mintinline{text}|out| directory with the packaged application. If there are
+    \end{mintedbox}
+    This will create a \nminted{text}{out} directory with the packaged application. If there are
     any errors, they will be displayed in the terminal. These might include missing dependencies or
     incorrect configurations that must be fixed before the application can be packaged.
     %
     \item In Linux, the application is typically located in the
-    \mintinline{text}|out/make/deb/x64| directory.
+    \nminted{text}{out/make/deb/x64} directory.
     %
-    \item To install the application, navigate to the directory where the \mintinline{text}|.deb|
-    file is located and run:
-    \begin{minted}[frame=single]{bash}
+    \item To install the application, navigate to the directory where the \nminted{text}{.deb} file
+    is located and run:
+    \begin{mintedbox}{bash}
 sudo dpkg -i <app-name>.deb
-    \end{minted}
+    \end{mintedbox}
     when the installation is complete, the application will be available in the system's
     applications menu.
 \end{enumerate}

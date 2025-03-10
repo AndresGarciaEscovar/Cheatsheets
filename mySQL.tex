@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  "MySQL" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft MySQL\textquotedblright\ Cheatsheet}
+\section{\quoted{MySQL} Cheatsheet}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 %
@@ -12,9 +12,9 @@
 \begin{itemize}
     %
     \item Login to MySQL console:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 mysql -u root -p
-    \end{minted}
+    \end{mintedbox}
     the password is in the notebook.
 \end{itemize}
 
@@ -23,18 +23,18 @@ mysql -u root -p
 The following Python instructions create a database called \textit{mydb} in MySQL:
 \begin{itemize}
     \item Create a pip virtual environment and activate it:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 python3 -m venv venv
 source venv/bin/activate
-    \end{minted}
+    \end{mintedbox}
     %
     \item Install the packages that will act as the connectors:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 pip install mysql-connector mysql-connector-python mysql-connector-python-rf
-    \end{minted}
+    \end{mintedbox}
     %
     \item Using the following Python script, we can create a database called \textit{mydb}:
-    \begin{minted}[frame=single]{sql}
+    \begin{mintedbox}{sql}
 # Import the connector.
 import mysql.connector as connector
 
@@ -56,16 +56,16 @@ my_cursor.execute("SHOW DATABASES")  # Show all the databases.
 for db in my_cursor:
     # Names are encoded in bytes.
     print(tuple(x.decode("utf-8") for x in  db))
-    \end{minted}
+    \end{mintedbox}
     %
     \item Run the script and the output should be:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 ('information_schema',)
 ('mydb',)
 ('mysql',)
 ('performance_schema',)
 ('sys',)
-    \end{minted}
+    \end{mintedbox}
     %
     \item If the database appears in the list, then it has been created successfully.
 \end{itemize}
@@ -75,18 +75,18 @@ for db in my_cursor:
 \begin{itemize}
     %
     \item Install the package:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 sudo apt install libmysqlclient-dev
-    \end{minted}
+    \end{mintedbox}
     this will install the MySQL client library.
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 sudo apt install python3-dev
-    \end{minted}
+    \end{mintedbox}
     this will install the Python development headers.
     %
     \item Install the Python packages:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 pip install cryptography Flask Flask-Login Flask-SocketIO Flask-SQLAlchemy mysqlclient pymysql
-    \end{minted}
+    \end{mintedbox}
     With these packages installed, we can now use MySQL with Flask.
 \end{itemize}

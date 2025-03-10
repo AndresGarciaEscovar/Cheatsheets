@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % "Make" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft REACT\textquotedblright\ Cheatsheet}
+\section{\quoted{REACT} Cheatsheet}
 
 %///////////////////////////////////////////////////////////////////////////////
 % Installation
@@ -11,24 +11,24 @@
 To install REACT in Linux we can use the command line:
 \begin{enumerate}
     \item Install the \mintinline{bash}|npm| package manager:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 sudo apt install npm
-    \end{minted}
+    \end{mintedbox}
     %
     \item Install the \mintinline{bash}|create-react-app| package:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 sudo npm install -g create-react-app
-    \end{minted}
+    \end{mintedbox}
     %
     \item It is recommended to install the \mintinline{bash}|node.js| package:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 sudo apt install nodejs
-    \end{minted}
+    \end{mintedbox}
     %
     \item Check the installation:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 create-react-app --version
-    \end{minted}
+    \end{mintedbox}
 \end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////
@@ -39,15 +39,15 @@ create-react-app --version
 To create and run an application do:
 \begin{enumerate}
     \item Navigate to the directory where you want to create your application:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 cd <path_to_directory>
-    \end{minted}
+    \end{mintedbox}
     %
-    \item Create the application by using the 
+    \item Create the application by using the
     \mintinline{bash}|create-react-app| command:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 npx create-react-app <app_name>
-    \end{minted}
+    \end{mintedbox}
     the \mintinline{bash}|npx| command a package runner tool that comes with
     \mintinline{bash}|npm| $5.2+$ and higher.
 \end{enumerate}
@@ -60,17 +60,17 @@ npx create-react-app <app_name>
 Once the application has been created:
 \begin{enumerate}
     \item Navigate to the application directory:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 cd <app_name>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Run the application:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 npm start
-    \end{minted}
+    \end{mintedbox}
     %
     \item Open a web browser and navigate to:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 http://localhost:3000/
-    \end{minted}
+    \end{mintedbox}
 \end{enumerate}

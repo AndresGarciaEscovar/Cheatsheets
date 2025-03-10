@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  "conda" Cheatsheet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft conda\textquotedblright\ Cheatsheet}
+\section{\quoted{conda} Cheatsheet}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 % Create "conda" Environment
@@ -12,21 +12,21 @@
 \begin{itemize}
     %
     \item Create an empty conda environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda create --name <env_name>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Create a conda environment with packages:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda create --name <env_name> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Create a conda environment from a yaml file:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda env create --file <path_to_yaml_file>
-    \end{minted}
+    \end{mintedbox}
     Sample yaml file:
-    \begin{minted}[frame=single]{yaml}
+    \begin{mintedbox}{yaml}
 name: myenv
 channels:
     - conda-forge
@@ -38,12 +38,12 @@ dependencies:
     - pip
     - pip:
         - tensorflow==2.0.0
-    \end{minted}
+    \end{mintedbox}
     %
     \item Create at a specific location:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda create --prefix <path_to_env>
-    \end{minted}
+    \end{mintedbox}
     The previous options still hold.
     %
 \end{itemize}
@@ -59,23 +59,23 @@ conda create --prefix <path_to_env>
 \begin{itemize}
     %
     \item Activate an environment in the main installation directory:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda activate <env_name>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Activate an environment in a specific location:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda activate <path_to_env>
-    \end{minted}
+    \end{mintedbox}
     %
     \item To deactivate an environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda deactivate
-    \end{minted}
+    \end{mintedbox}
     %
     \newpage
     \item Activate conda environment in a Python script:
-    \begin{minted}[frame=single]{python}
+    \begin{mintedbox}{python}
 import subprocess
 
 script = (
@@ -84,11 +84,11 @@ script = (
 )
 
 subprocess.run(script.split(" "), shell=True)
-    \end{minted}
+    \end{mintedbox}
     Things to remember:
     \begin{itemize}
-        \item The \mintinline{python}{shell=True} option is important; with 
-        \mintinline{python}{shell=False}, the code will \textbf{not} run.
+        \item The \nminted{python}{shell=True} option is important; with
+        \nminted{python}{shell=False}, the code will \textbf{not} run.
     \end{itemize}
     %
 \end{itemize}
@@ -102,10 +102,10 @@ subprocess.run(script.split(" "), shell=True)
 \begin{itemize}
     %
     \item Clone an environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda create --name <env_name> --clone <env_to_clone>
-    \end{minted}
-    %    
+    \end{mintedbox}
+    %
 \end{itemize}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,14 +117,14 @@ conda create --name <env_name> --clone <env_to_clone>
 \begin{itemize}
     %
     \item Remove an environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda remove --name <env_name> --all
-    \end{minted}
+    \end{mintedbox}
     %
     \item Remove and environment in a specific location:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda remove --prefix <path_to_env> --all
-    \end{minted}
+    \end{mintedbox}
     %
 \end{itemize}
 
@@ -138,45 +138,45 @@ Notice that different commands can be mixed and matched.
 \begin{itemize}
     %
     \item Add packages to an environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda install --name <env_name> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Add packages to an environment in a specific location:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda install --prefix <path_to_env> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Add packages to an active environment:
     \begin{enumerate}
         \item Activate the environment (\hyperref[conda:activateEnv]{click here}).
-        \item Add packages: 
-        \begin{minted}[frame=single]{bash}
+        \item Add packages:
+        \begin{mintedbox}{bash}
 conda install <package_name_0>...<package_name_N>
-        \end{minted}
+        \end{mintedbox}
     \end{enumerate}
     %
     \item Add packages from a different channel in an active environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda install --channel <channel_name> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Add packages with a specific version:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda install <package_name>=<version>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Add packages from a yaml file:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda env update --file <path_to_yaml_file>
-    \end{minted}
+    \end{mintedbox}
         %
     \item Update the packages to the given ones:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda env update --file <path_to_yaml_file> --prune
-    \end{minted}
+    \end{mintedbox}
     Sample yaml file to udpate:
-    \begin{minted}[frame=single]{yaml}
+    \begin{mintedbox}{yaml}
         channels:
             - conda-forge
             - defaults
@@ -187,7 +187,7 @@ conda env update --file <path_to_yaml_file> --prune
             - pip
             - pip:
                 - tensorflow==2.0.0
-            \end{minted}
+            \end{mintedbox}
             %
 \end{itemize}
 
@@ -200,22 +200,22 @@ conda env update --file <path_to_yaml_file> --prune
 
 \begin{itemize}
     \item Remove packages from an environment:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda remove --name <env_name> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Remove packages from an environment in a specific location:
-    \begin{minted}[frame=single]{bash}
+    \begin{mintedbox}{bash}
 conda remove --prefix <path_to_env> <package_name_0>...<package_name_N>
-    \end{minted}
+    \end{mintedbox}
     %
     \item Remove packages from an active environment:
     \begin{enumerate}
         \item Activate the environment (\hyperref[conda:activateEnv]{click here}).
-        \item Remove packages: 
-        \begin{minted}[frame=single]{bash}
+        \item Remove packages:
+        \begin{mintedbox}{bash}
 conda remove <package_name_0>...<package_name_N>
-        \end{minted}
+        \end{mintedbox}
     \end{enumerate}
     %
 \end{itemize}

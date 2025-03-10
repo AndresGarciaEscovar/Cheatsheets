@@ -1,9 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % "Installations and Setup"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textquotedblleft Installations and Setup\textquotedblright\
-Cheatsheet
-}
+\section{\quoted{Installations and Setup} Cheatsheet}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
 % Linux - NeoVIM
@@ -167,6 +165,22 @@ curl -L -o install-tl-unx.tar.gz \
 https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
         \end{mintedbox}
     \end{itemize}
+    \item Once the package is downloaded, extract the contents of the package:
+    \begin{mintedbox}{bash}
+tar -xzf install-tl-unx.tar.gz
+    \end{mintedbox}
+    %
+    \item Go to the directory where the package was extracted:
+    \begin{mintedbox}{bash}
+cd install-tl-*
+    \end{mintedbox}
+    %
+    \item Run the installation script:
+    \begin{mintedbox}{bash}
+sudo perl ./install-tl --no-interaction
+    \end{mintedbox}
+    This will install \textbf{TeXLive} in the system. Depending on the system, this may take a
+    while.
 \end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////////////////////////
