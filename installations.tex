@@ -6,7 +6,7 @@ Cheatsheet
 }
 
 %///////////////////////////////////////////////////////////////////////////////
-% Linux - NeoVIM 
+% Linux - NeoVIM
 %///////////////////////////////////////////////////////////////////////////////
 
 \subsection{Linux - NeoVIM}
@@ -16,21 +16,20 @@ Cheatsheet
 
 \begin{enumerate}
     %
-    \item To install \textbf{NeoVIM} there are many methods. The suggested
-    method is to use the \textit{snap} store, or equivalent, by using the
-    command:
+    \item To install \textbf{NeoVIM} there are many methods. The suggested method is to use the
+    \textit{snap} store, or equivalent, by using the command:
     \begin{minted}[frame=single]{bash}
 $ sudo snap install nvim --classic
     \end{minted}
     This will install \textbf{NeoVIM} in the system.
     %
-    \item The \textit{--classic} flag is used to install the software with
-    full access to the system, which is required for some plugins and, most of
-    the time, for the software to even install.
+    \item The \textit{--classic} flag is used to install the software with full access to the
+    system, which is required for some plugins and, most of the time, for the software to even
+    install.
     %
     \item Make sure that the
-    \textit{.bashrc} has the snap store path in the \mintinline{text}|PATH|
-    variable at the start of the list:
+    \textit{.bashrc} has the snap store path in the \nminted{text}{PATH} variable at the start of
+    the list:
     \begin{minted}[frame=single]{bash}
 export PATH=/snap/bin:$PATH
     \end{minted}
@@ -39,8 +38,7 @@ export PATH=/snap/bin:$PATH
     \begin{minted}[frame=single]{bash}
 $ nvim --version
     \end{minted}
-    Make sure that this is not a \textquotedblleft developer 
-    version\textquotedblright; i.e., the latest stable version.
+    Make sure that this is not a \quoted{developer version}; i.e., the latest stable version.
     %
 \end{enumerate}
 
@@ -63,7 +61,7 @@ touch ~/.config/nvim/init.lua
     This is done for the modern version of \textbf{NeoVIM}, which uses the
     \textit{lua} language for configuration.
     %
-    \item Create the \mintinline{text}|~/.config/nvim/lua| directory, if 
+    \item Create the \mintinline{text}|~/.config/nvim/lua| directory, if
     it does not exist:
     \begin{minted}[frame=single]{bash}
 mkdir ~/.config/nvim/lua
@@ -76,7 +74,7 @@ mkdir ~/.config/nvim/lua
         \item plugins
         \item util
     \end{itemize}
-    This is where the different configuration files will be stored. Since 
+    This is where the different configuration files will be stored. Since
     this is the default place where \textbf{NeoVim} will look for the different
     files and directories, it is a good idea to keep the default structure.
     %
@@ -91,13 +89,13 @@ mkdir ~/.config/nvim/lua
     \end{minted}
     %
     \item To dowload the packages and give them the basic configuration, create
-    an \mintinline{bash}|init.lua| in the \mintinline{bash}|config| directory: 
+    an \mintinline{bash}|init.lua| in the \mintinline{bash}|config| directory:
     \begin{minted}[frame=single]{bash}
 <root == ~/.config/nvim>
 | init.lua
 |_ lua
     |_ config
-    |   |_ init.lua    
+    |   |_ init.lua
     |_ plugins
     |_ util
     \end{minted}
@@ -120,7 +118,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Example using a list of specs with the default options
 -- Make sure to set `mapleader` before lazy so your mappings are correct
-vim.g.mapleader = " " 
+vim.g.mapleader = " "
 
 require("lazy").setup({
   "folke/which-key.nvim",
@@ -140,12 +138,20 @@ require("lazy").setup({
 \end{enumerate}
 
 %///////////////////////////////////////////////////////////////////////////////
-% Miscellaneous - Setup SSH Keys to Connect Between Machines 
+% Linux - TeXLive
+%///////////////////////////////////////////////////////////////////////////////
+
+\subsection{Linux - TeXLive}
+
+These are the instructions to install and set up \textbf{TeXLive} in a Linux machine
+
+%///////////////////////////////////////////////////////////////////////////////
+% Miscellaneous - Setup SSH Keys to Connect Between Machines
 %///////////////////////////////////////////////////////////////////////////////
 
 \subsection{Miscellaneous - Setup SSH Keys to Connect Between Machines}
 
-The instructions are for setting up SSH keys to connect between machines, it 
+The instructions are for setting up SSH keys to connect between machines, it
 should be useful for any Linux distribution, MacOS, and Windows.\bigbreak
 
 For this, we will need \textbf{OpenSSH} installed in both the origin and host
@@ -170,7 +176,7 @@ ssh-keygen -t rsa -b 4096
     \end{minted}
     This will create a key with 4096 bits of encryption (suggested).
     \begin{itemize}
-        \item To add a comment at the end of the key, use the 
+        \item To add a comment at the end of the key, use the
         \mintinline{text}| -C| flag:
         \begin{minted}[frame=single]{bash}
 ssh-keygen -t rsa -b 4096 -C "Comment here"
@@ -194,7 +200,7 @@ Enter passphrase (empty for no passphrase):
     \mintinline{text}|name.pub| is the public key.
     \item Copy the public key such that it can be added to the receiving
     machine.
-    \item To make the connection automatic, you can use the file 
+    \item To make the connection automatic, you can use the file
     \mintinline{text}|~/.ssh/config| to setup the connection. This file should
     look like:
     \begin{minted}[frame=single]{text}
