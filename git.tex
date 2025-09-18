@@ -74,6 +74,11 @@ git push origin --delete demo
 
 \begin{itemize}
     %
+    \item Update the submodules:
+    \begin{mintedbox}{bash}
+git submodule update --remote --merge --recursive
+    \end{mintedbox}
+    %
     \item Update the list of remote branches:
     \begin{mintedbox}{bash}
 git remote update origin --prune
